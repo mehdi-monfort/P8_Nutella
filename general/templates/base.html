@@ -1,0 +1,82 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Creative - Start Bootstrap Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- SimpleLightbox plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+        <!-- font family -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
+    </head>
+    <body id="page-top" class="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-light fixed-top py-3" id="mainNav">
+            <div class="col-md-6 container-navbar1">
+                <img class="logo-purbeurre" src="../static/assets/logo_pur_beurre.svg"/>
+                <a class="navbar-brand" href="/#page-top">Pur Beurre</a>
+            </div>
+            <div class="col-md-6 text-center container-navbar2">
+                <form class="input" id="user-text-form">
+                    {% csrf_token %}
+                    <input type="text" class="usertext text-center search" id="search" placeholder="chercher">
+                    <button class="submit button" type="submit"></button>
+                </form>
+                <div class="logo col-md-3">
+                    <a href="/login">
+                        <img class="icone-navbar" src="../static/assets/créeruncompte.png/">
+                    </a>
+                    <a href="/food">
+                        <img class="icone-navbar" src="../static/assets/carotte.svg"/>
+                    </a>
+                    <a href="/">
+                        <img class="icone-navbar" src="../static/assets/deconnexion.png"/>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        {% block content %}{% endblock %}
+        <footer class="bg-light py-5 footer">
+            <div class="px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-6 text-center">
+                        <div class="names">
+                        <a class="navbar-brand">mentions légales</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="names">
+                        <a class="navbar-brand" href="/#contact">contact</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="static/js/scripts.js"></script>
+        <script src="static/js/search.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
