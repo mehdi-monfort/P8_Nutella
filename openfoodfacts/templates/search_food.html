@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="background">
+        {% for product in product_data %}
+            {{ product.name }}
+            <a href="/">
+                <img class="image" src= "{{ product.image }}"/>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="insert">
+        <h2 class="title">Vous pouvez remplacer cet aliment par:</h2>
+    </div>
+    <div class container-element>
+        <div class="element">
+            <div class="e"></div>
+            <div class="e"></div>
+            <div class="e"></div>
+        </div>
+        <div class="element">
+            <div class="e"></div>
+            <div class="e"></div>
+            <div class="e"></div>
+        </div>
+    </div>
+{% endblock %}

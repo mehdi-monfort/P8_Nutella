@@ -109,10 +109,15 @@
   margin-right: -5px;
 }
 
-.submit {
+.submit, .button-log {
   border-radius: 0%;
   background-color: #c34e2e;
   color: #345a61;
+}
+
+.blank {
+  width: 100%;
+  height: 5%;
 }
 
 .photo {
@@ -150,20 +155,21 @@
   transform: translate(-50%,-50%);
 }
 
-.title-h2, .name {
+.title-h2, .name, .label, .title {
   font-family: "Open Sans", sans-serif;
 }
 
 .title-h2 {
   color: #345a61;
 }
+
 .name {
   color: #e8a75d;
 }
 
 .title {
-  font-family: "Open Sans", sans-serif;
   color: #c45525;
+  text-align: center;
 }
 
 .page-body {
@@ -190,8 +196,7 @@ body {
   align-items: flex-start;
 }
 
-.background {
-  height: 25%;
+.background, .background_your_food {
   width: 100%;
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/background.jpg");
   background-position: center;
@@ -199,30 +204,83 @@ body {
   background-size: cover;
 }
 
-.insert {
+.background {
+  height: 40%;
+}
+
+.background_your_food {
+  height: 20%;
+}
+
+.insert, .insert_your_food {
   background-color: #e8a75d;
   width: 100%;
-  height: 25%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-element {
   width: 100%;
-  height: 50%;
+  height: 65%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 50fr);
+  grid-template-rows: repeat(2, 350px);
+}
+
+.container-404 {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header.masthead h1 {
+    color: #c45525;
+    text-shadow: 0.02em 0.02em #de9440;
+    margin-bottom: auto;
+}
+
+.image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50px;
 }
 
 .element {
-  display: flex;
   width: 100%;
-  height: 25%;
+  height: 40%;
+  display:table;
 }
 
 .e {
   background-color: #345a61;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 60%;
+  display:table-cell;
+  text-align: -moz-center;
+  position: relative;
+}
+
+.poster {
+  width: 250px;
+  position: relative;
+}
+
+.label {
+  display: block;
+  float: right;
+  z-index: 10;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #c45525;
+  font-weight: bold;
 }
 
 body {
@@ -256,7 +314,6 @@ hr:not([size]) {
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 500;
   line-height: 1.2;
 }
@@ -5926,9 +5983,37 @@ textarea.form-control-lg {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 60%;
+    height: 50%;
+  }
+  .image {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+  .container-element {
+    width: 100%;
+    height: 90vh;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, 100px);
+    grid-row-gap: 50px;
+    }
+  .poster {
+    width: 100px;
+  }
+  .label {
+    right: -15px;
+    top: -5px;
+    width: 40px;
+    height: 40px;
+    padding: 7px;
+  }
+  .container-404 {
+  text-align: center;
   }
 }
+
 @media (max-width: 991.98px) {
   .modal-fullscreen-lg-down {
     width: 100vw;

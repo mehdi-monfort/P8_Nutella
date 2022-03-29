@@ -4,6 +4,7 @@ from django.conf import settings
 
 class Nutriment(models.Model):
 
+    energy = models.fields.FloatField(null=True)
     protein = models.fields.FloatField(null=True)
     salt = models.fields.FloatField(null=True)
     sugar = models.fields.FloatField(null=True)

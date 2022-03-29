@@ -19,52 +19,48 @@ class Command(BaseCommand):
                 'action': 'process',
                 'json': 1,
                 'page_size': 500,
-                'page': 1,
-                'tagtype_0': 'categories',
-                'tag_contains_0': 'contains',
-                'tag_0': category,
+                'search_simple': 1,
+                'search_terms': category,
             }
             response = requests.get(self.url, params=params)
             resp = response.json()
-
             for i in range(500):
-                try:
-                    prod = Product(
-                        resp["products"][i].get("categories", "0"),
-                        resp["products"][i].get("product_name_fr", "0"),
-                        resp["products"][i].get("ecoscore_grade", "unknown"),
-                        resp["products"][i].get("image_front_url", "0"),
-                    )
-                    nut = Nutriment(
-                        resp["products"][i]["nutriscore_data"].get("proteins", "0"),
-                        resp["products"][i]["nutriscore_data"].get("sodium", "0"),
-                        resp["products"][i]["nutriscore_data"].get("sugars", "0"),
-                        resp["products"][i]["nutriscore_data"].get("satured_fat", "0"),
-                    )
-                    checkers = [
-                        prod.ecoscore != "0" and
-                        prod.categorie != "unknown"
+                prod = Product(
+                    name=resp["products"][i].get("product_name_fr", ""),
+                    ecoscore=resp["products"][i].get("ecoscore_grade", "unknown"),
+                    image=resp["products"][i].get("image_front_url", "0")
+                )
+                nut = Nutriment(
+                    energy=resp["products"][i]["nutriments"].get("energy_100g", "e"),
+                    protein=resp["products"][i]["nutriments"].get("proteins_100g", "e"),
+                    salt=resp["products"][i]["nutriments"].get("sodium_100g", "e"),
+                    sugar=resp["products"][i]["nutriments"].get("sugars_100g", "e"),
+                    fat=resp["products"][i]["nutriments"].get("saturated-fat_100g", "e")
+                )
+                checkers = [
+                    prod.ecoscore != "unknown" and
+                    prod.ecoscore != "not-applicable" and
+                    prod.name != "" and nut.salt != "e" and
+                    prod.image != "0" and nut.sugar != "e" and
+                    nut.energy != "e" and nut.fat != "e" and
+                    nut.fat != "e"
                     ]
-                    if all(checkers):
+                if all(checkers):
 
-                        Nutriment.objects.create(
-                            protein=nut.protein,
-                            salt=nut.salt,
-                            sugar=nut.sugar,
-                            fat=nut.fat,
-                        )
-                        Product.objects.create(
-                            name=prod.name,
-                            categorie=category,
-                            ecoscore=prod.categorie,
-                            image=prod.ecoscore,
-                        )
+                    Nutriment.objects.create(
+                        energy=nut.energy,
+                        protein=nut.protein,
+                        salt=nut.salt,
+                        sugar=nut.sugar,
+                        fat=nut.fat,
+                    )
 
-                    else:
-                        continue
+                    Product.objects.create(
+                        categorie=category,
+                        name=prod.name,
+                        ecoscore=prod.ecoscore.upper(),
+                        image=prod.image,
+                    )
 
-                except KeyError:
-                    continue
-
-                except IndexError:
+                else:
                     continue

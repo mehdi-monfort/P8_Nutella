@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -8,3 +7,7 @@ def index(request):
 
 def food(request):
     return render(request, 'food.html')
+
+
+def product404(request):
+    return render(request, 'product404.html')
