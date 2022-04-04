@@ -1,26 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="background">
-        {% for product in product_data %}
-            {{ product.name }}
-            <a href="/">
-                <img class="image" src= "{{ product.image }}"/>
-            </a>
-        {% endfor %}
+{% load static %}
+    <div class="background_search_food">
+        <img class="image_background" src="{{ product.image }}">
+        <h2 class="title_background title"> {{ product.name }} </h2>
     </div>
     <div class="insert">
         <h2 class="title">Vous pouvez remplacer cet aliment par:</h2>
     </div>
-    <div class container-element>
+    </div>
+    <div class="blank">
+    </div>
+    <div class="container-element">
+        {% for substitute in data %}
         <div class="element">
-            <div class="e"></div>
-            <div class="e"></div>
-            <div class="e"></div>
+            <div class="e">
+                <div class="poster">
+                    <a href="/food/{{ substitute.id }}">
+                        <img class="image" src="{{ substitute.image }}">
+                    </a>
+                    <div class="label"> {{ substitute.ecoscore }}</div>
+                </div>
+                <div class="name"> {{ substitute.name }} </div>
+                <div class="save">
+                    <img class="floppy" src="{% static 'assets/disquette.svg' %}"></img>
+                    <p class="watch-over">sauvegarder</p>
+                </div>
+            </div>
         </div>
-        <div class="element">
-            <div class="e"></div>
-            <div class="e"></div>
-            <div class="e"></div>
-        </div>
+        {% endfor %}
     </div>
 {% endblock %}

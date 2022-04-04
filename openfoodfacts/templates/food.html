@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <div class="background_search_food">
+        <img class="image_background" src="{{ product.image }}">
+        <h2 class="title title_background"> {{ product.name }} </h2>
+    </div>
+    </div>
+    <div class="blank">
+    </div>
+    <div class="container_food">
+        <div class="container-left col-md-6 text-center">
+            {% if product.ecoscore == "E" %}
+                <img src="{% static 'assets/nutriscore-e.svg' %}"></img>
+            {% elif product.ecoscore == "D" %}
+                <img src="{% static 'assets/nutriscore-d.svg' %}"></img>
+            {% elif product.ecoscore == "C" %}
+                <img src="{% static 'assets/nutriscore-c.svg' %}"></img>
+            {% elif product.ecoscore == "B" %}
+                <img src="{% static 'assets/nutriscore-b.svg' %}"></img>
+            {% else %}
+                <img src="{% static 'assets/nutriscore-a.svg' %}"></img>
+            {% endif %}
+        </div>
+        <div class="container-right col-md-6 text-center">
+            <li><strong>Repère nutritionnel pour 100G :</strong></li>
+            <li><strong>Energie : </strong>{{ nutriment.energy }} kcal</li>
+            <li><strong>Protéine : </strong>{{ nutriment.protein }} gr</li>
+            <li><strong>Sel : </strong>{{ nutriment.salt }} gr</li>
+            <li><strong>Sucre : </strong>{{ nutriment.sugar }} gr</li>
+            <li><strong>Gras : </strong>{{ nutriment.fat }} gr</li>
+            <li><strong>Dont acide gras saturé : </strong>{{ nutriment.saturedfat }} gr</li>
+        </div>
+        <div class="container-bottom col-md-12 text-center">
+            <div class="border-container">
+                <a>Voir la fiche d'openfoodfacts</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -35,7 +35,8 @@ class Command(BaseCommand):
                     protein=resp["products"][i]["nutriments"].get("proteins_100g", "e"),
                     salt=resp["products"][i]["nutriments"].get("sodium_100g", "e"),
                     sugar=resp["products"][i]["nutriments"].get("sugars_100g", "e"),
-                    fat=resp["products"][i]["nutriments"].get("saturated-fat_100g", "e")
+                    saturedfat=resp["products"][i]["nutriments"].get("saturated-fat_100g", "e"),
+                    fat=resp["products"][i]["nutriments"].get("fat_100g", "e")
                 )
                 checkers = [
                     prod.ecoscore != "unknown" and
@@ -43,7 +44,7 @@ class Command(BaseCommand):
                     prod.name != "" and nut.salt != "e" and
                     prod.image != "0" and nut.sugar != "e" and
                     nut.energy != "e" and nut.fat != "e" and
-                    nut.fat != "e"
+                    nut.fat != "e" and nut.saturedfat != "e"
                     ]
                 if all(checkers):
 
@@ -52,6 +53,7 @@ class Command(BaseCommand):
                         protein=nut.protein,
                         salt=nut.salt,
                         sugar=nut.sugar,
+                        saturedfat=nut.saturedfat,
                         fat=nut.fat,
                     )
 

@@ -4,11 +4,12 @@ from django.conf import settings
 
 class Nutriment(models.Model):
 
-    energy = models.fields.FloatField(null=True)
-    protein = models.fields.FloatField(null=True)
-    salt = models.fields.FloatField(null=True)
-    sugar = models.fields.FloatField(null=True)
-    fat = models.fields.FloatField(null=True)
+    energy = models.fields.FloatField(null=False)
+    protein = models.fields.FloatField(null=False)
+    salt = models.fields.FloatField(null=False)
+    sugar = models.fields.FloatField(null=False)
+    saturedfat = models.fields.FloatField(null=False)
+    fat = models.fields.FloatField(null=False)
 
 
 class Product(models.Model):
@@ -17,7 +18,7 @@ class Product(models.Model):
     categorie = models.fields.CharField(max_length=100)
     ecoscore = models.fields.CharField(max_length=1)
     image = models.fields.CharField(max_length=250)
-    nutriment = models.OneToOneField(Nutriment, on_delete=models.CASCADE, null=True, related_name='nutriment')
+    nutriment = models.ForeignKey(Nutriment, on_delete=models.CASCADE, null=True, related_name='nutriment')
 
 
 class Favorite(models.Model):

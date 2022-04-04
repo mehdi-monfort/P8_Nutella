@@ -12,10 +12,14 @@
         <div class="element">
             <div class="e">
                 <div class="poster">
-                    <img class="image" src="{{ product.image }}">
+                    <a href="/food/{{ product.id }}">
+                        <img class="image" src="{{ product.image }}">
+                    </a>
                     <div class="label"> {{ product.ecoscore }}</div>
                 </div>
-                <div class="name"> {{ product.name }} </div>
+                <a href="/search_food/{{ product.id }}">
+                    <div class="name"> {{ product.name }} </div>
+                </a>
             </div>
         </div>
         {% endfor %}
