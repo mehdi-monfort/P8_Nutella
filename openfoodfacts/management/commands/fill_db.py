@@ -28,7 +28,8 @@ class Command(BaseCommand):
                 prod = Product(
                     name=resp["products"][i].get("product_name_fr", ""),
                     ecoscore=resp["products"][i].get("ecoscore_grade", "unknown"),
-                    image=resp["products"][i].get("image_front_url", "0")
+                    image=resp["products"][i].get("image_front_url", "0"),
+                    linkoff=resp["products"][i].get("url", "0"),
                 )
                 nut = Nutriment(
                     energy=resp["products"][i]["nutriments"].get("energy_100g", "e"),
@@ -48,6 +49,13 @@ class Command(BaseCommand):
                     ]
                 if all(checkers):
 
+                    Product.objects.create(
+                        categorie=category,
+                        name=prod.name,
+                        ecoscore=prod.ecoscore.upper(),
+                        image=prod.image,
+                    )
+
                     Nutriment.objects.create(
                         energy=nut.energy,
                         protein=nut.protein,
@@ -55,13 +63,7 @@ class Command(BaseCommand):
                         sugar=nut.sugar,
                         saturedfat=nut.saturedfat,
                         fat=nut.fat,
-                    )
-
-                    Product.objects.create(
-                        categorie=category,
-                        name=prod.name,
-                        ecoscore=prod.ecoscore.upper(),
-                        image=prod.image,
+                        product_id=Product.id
                     )
 
                 else:
