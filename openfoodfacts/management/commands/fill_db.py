@@ -54,6 +54,7 @@ class Command(BaseCommand):
                         name=prod.name,
                         ecoscore=prod.ecoscore.upper(),
                         image=prod.image,
+                        linkoff=prod.linkoff
                     )
 
                     Nutriment.objects.create(
@@ -62,8 +63,7 @@ class Command(BaseCommand):
                         salt=nut.salt,
                         sugar=nut.sugar,
                         saturedfat=nut.saturedfat,
-                        fat=nut.fat,
-                        product_id=Product.id
+                        fat=nut.fat
                     )
 
                 else:
