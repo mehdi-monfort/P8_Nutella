@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    {% for favorite in favorites %}
+        <li>{{ favorite.product }}</li>
+        <li>{{ favorite.substitute }}</li>
+    {% endfor %}
+{% endblock %}

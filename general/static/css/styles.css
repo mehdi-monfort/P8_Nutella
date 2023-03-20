@@ -129,12 +129,43 @@
   height: 100px;
   text-align : center;
   border-radius: 50%;
+  transition: transform .1s;
+}
+
+.photo:hover{
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  -moz-transition: scale(1.5);
+  -o-transition: scale(1.5);
+  transform: scale(1.5);
 }
 
 .icone {
   width: 50px;
   height: 50px;
   text-align: center;
+}
+
+.icone:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 .names{
@@ -168,11 +199,14 @@
   transform: translate(-50%,-50%);
 }
 
-.title-h2, .name, .label, .title {
+.title {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
 }
-
+.title-h2, .name, .label {
+  font-family: "Scope One", sans-serif;
+  font-weight: 400;
+}
 .title-h2 {
   color: #345a61;
 }
@@ -243,8 +277,9 @@ body {
 
 .title_background {
   position: absolute;
-  top: 250px;
+  top: 200px;
   color: white;
+  text-shadow: -1px 0 #345a61, 0 1px #345a61, 1px 0 #345a61, 0 -1px #345a61;
   font-weight: bold;
 }
 
